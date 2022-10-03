@@ -41,17 +41,12 @@ def get_values(spreadsheet_id, range_name):
         print(f"An error occurred: {error}")
         return error
 
-# con = connect(
-#     dbname='postgres' user='user',
-#     host = 'localhost', password='password')
-# cur = con.cursor()
-# cur.execute('CREATE DATABASE database')
-
 def get_dollar_currency_from_cb():
     link = 'https://www.cbr.ru/eng/currency_base/daily/'
     response = requests.get('https://www.cbr.ru/scripts/XML_daily.asp?')
     soup = BeautifulSoup(response.content, 'xml')
     print(soup.find('Valute', ID='R01235').find('Value').text)
+
 
 if __name__ == '__main__':
     # Pass: spreadsheet_id, and range_name
